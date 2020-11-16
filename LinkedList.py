@@ -109,6 +109,7 @@ class LinkedList:
 
             # prev_nodes next element to point to current elements next node
             prev_node.new_element = curr_node.next_element
+            curr_node.next_element = None
 
     def delete_by_value(self, value):
         if self.is_empty():
@@ -122,6 +123,7 @@ class LinkedList:
             if curr_node.data == value:
                 print('Value {0} is at position {1}'.format(value, curr_pos))
                 prev_node.next_element = curr_node.next_element
+                curr_node.next_element = None
                 break
             else:
                 # print('In Else part  {0}'.format(curr_pos))
