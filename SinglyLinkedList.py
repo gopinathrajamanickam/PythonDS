@@ -4,7 +4,7 @@ class Node:
         self.next_element = None
 
 
-class LinkedList:
+class SinglyLinkedList:
     def __init__(self):
         self.head_node = None
 
@@ -145,7 +145,7 @@ class LinkedList:
             print(final_print)
 
 
-lst = LinkedList()
+lst = SinglyLinkedList()
 lst.insert_at_head(1)
 lst.insert_at_head(2)
 lst.insert_at_tail(3)
