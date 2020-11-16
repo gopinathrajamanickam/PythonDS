@@ -39,12 +39,12 @@ class LinkedList:
         # Traverse to the insertion position
         curr_pos = 1
         curr_element = self.get_head()
-        while (curr_element.next_element is not None and curr_pos < pos - 1):
+        while (curr_element is not None and curr_pos < pos - 1):
             print(curr_pos, curr_element.data)
             curr_pos += 1
             curr_element = curr_element.next_element
 
-        if (curr_element.next_element is not None):
+        if (curr_element is not None):
             # create a new_node
             new_element = Node(data)
 
@@ -57,14 +57,14 @@ class LinkedList:
     def search(self, value):
         if self.is_empty():
             print('List is empty')
-            return
+            return 0
 
         curr_pos = 1
         curr_node = self.get_head()
-        while (curr_node.next_element is not None):
+        while (curr_node is not None):
             if curr_node.data == value:
                 print('Value {0} is at position {1}'.format(value, curr_pos))
-                return
+                return curr_pos
             else:
                 curr_pos += 1
                 curr_node = curr_node.next_element
@@ -100,7 +100,7 @@ class LinkedList:
             curr_pos = 1
             prev_node = curr_node
 
-            while (curr_node.next_element is not None and curr_pos <= pos):
+            while (curr_node is not None and curr_pos <= pos):
                 print('Current position : {0} with value {1}'.format(
                     curr_pos, curr_node.data))
                 prev_node = curr_node
@@ -110,22 +110,24 @@ class LinkedList:
             # prev_nodes next element to point to current elements next node
             prev_node.new_element = curr_node.next_element
 
-    # def delete_by_value(self, value):
-    #     # Traverse to the node of given value
-    #     if self.is_empty():
-    #         print('List is empty')
-    #     else:
-    #         curr_node = self.get_head()
-    #         prev_node = curr_node
-    #         while (curr_node.next_element is not None):
-    #             if (curr_node.data == value):
-    #                 # prev nodes next element to point to current element's next node
-    #                 prev_node.next_element = curr_node.next_element
-    #                 return
-    #             print('Current value {0}'.format(curr_node.data))
-    #             prev_node = curr_node
-    #             curr_nodee = curr_node.next_element
-    #         print('Given value {0} not found in the list'.format(value))
+    def delete_by_value(self, value):
+        if self.is_empty():
+            print('List is empty')
+            return 0
+
+        curr_pos = 1
+        curr_node = self.get_head()
+        prev_node = None
+        while (curr_node is not None):
+            if curr_node.data == value:
+                print('Value {0} is at position {1}'.format(value, curr_pos))
+                prev_node.next_element = curr_node.next_element
+                break
+            else:
+                # print('In Else part  {0}'.format(curr_pos))
+                curr_pos += 1
+                prev_node = curr_node
+                curr_node = curr_node.next_element
 
     def print_list(self):
         # check if list is empty
@@ -153,7 +155,6 @@ lst.delete_at_head()
 lst.print_list()
 lst.delete_at_tail()
 lst.print_list()
-
 lst.delete_by_pos(2)
-# lst.delete_by_value(3)
+lst.delete_by_value(4)
 lst.print_list()
