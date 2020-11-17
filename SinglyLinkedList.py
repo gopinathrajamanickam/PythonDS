@@ -145,9 +145,9 @@ class SinglyLinkedList:
             print(final_print)
 
     def find_mid(self):
-        if lst.is_empty():
+        if self.is_empty():
             return -1
-        current_node = lst.get_head()
+        current_node = self.get_head()
         if current_node.next_element == None:
             # Only 1 element exist in array so return its value.
             return current_node.data
